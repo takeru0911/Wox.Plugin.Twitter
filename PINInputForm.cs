@@ -12,7 +12,6 @@ namespace Wox.Plugin.Twitter
     {
         private string _postMassage;
         private OAuthSession _session;
-        private object DynamicJson;
 
         public PINInputForm(string postMassage, OAuthSession session)
         {

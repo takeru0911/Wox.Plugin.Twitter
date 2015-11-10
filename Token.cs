@@ -7,6 +7,7 @@ namespace Wox.Plugin.Twitter
 {
     class Token
     {
-        public string pinCode { get; set; }
+        public string AccessToken { get; set; }
+        public string AccessTokenSecret { get; set; }
     }
 }

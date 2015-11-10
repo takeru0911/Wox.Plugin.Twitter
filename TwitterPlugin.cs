@@ -57,7 +57,12 @@ namespace Wox.Plugin.Twitter
             if (File.Exists(TOKEN_FILE_LOCATION))
             {
                 Token token = JsonConvert.DeserializeObject<Token>(File.ReadAllText(TOKEN_FILE_LOCATION));
-                tokens = null;
+                tokens = Tokens.Create(
+                    "zeFOBi6OfV4KFpUNdiEN6hoWL",
+                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ",
+                    token.AccessToken,
+                    token.AccessTokenSecret
+                    );
             }
             else
             {
