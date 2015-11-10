@@ -1,0 +1,12 @@
+{
+    "ID": "DB634BE6F3D34F6D9D64F7C2AEE3ECE1",
+    "ActionKeyword": "tw",
+    "Name": "Twitter For Wox",
+    "Description": "The humble incremental-search task switcher for Wox",
+    "Author": "orzFly, Regin Larsen, James Sulak, qianlifeng",
+    "Version": "1.0.2",
+    "Language": "csharp",
+    "Website": "https://github.com/lances101/Wox.Plugin.Switcheroo",
+    "IcoPath": "Images\\plugin.png",
+    "ExecuteFileName": "Wox.Plugin.Twitter.dll"
+}
