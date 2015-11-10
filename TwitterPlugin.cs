@@ -4,6 +4,7 @@ using CoreTweet.Core;
 using Newtonsoft.Json;
 using System.IO;
 using static CoreTweet.OAuth;
+using System;
 
 namespace Wox.Plugin.Twitter
 {
@@ -37,13 +38,17 @@ namespace Wox.Plugin.Twitter
         {
             Tokens tokens = getTokens();
             if(tokens != null)
-            {                
-                tokens.Statuses.Update(status => tweetString);
+            {
+                try {
+                    tokens.Statuses.Update(status => tweetString);
+                }catch(Exception e)
+                {}
             }
             else
             {
-                var session = OAuth.Authorize("zeFOBi6OfV4KFpUNdiEN6hoWL",
-                                                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ");
+                var session = OAuth.Authorize(
+                    "zeFOBi6OfV4KFpUNdiEN6hoWL",
+                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ");
                 var uri = session.AuthorizeUri;
                 System.Diagnostics.Process.Start(uri.ToString());
                 PINInputForm form = new PINInputForm(tweetString, session);

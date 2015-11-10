@@ -30,10 +30,10 @@ namespace Wox.Plugin.Twitter
             if(pinInputText.Text != null)
             {
                 string pinCode = pinInputText.Text;
+                this.Close();
                 Tokens tokens = _session.GetTokens(pinCode);
                 tokens.Statuses.Update(status => _postMassage);
-                //あとはTokenの保存処理                
-                outputAccessTokens(tokens);
+                outputAccessTokens(tokens);                
             }
         }
         
