@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using static CoreTweet.OAuth;
 namespace Wox.Plugin.Twitter
 {
+    //Form's Icon: E.g.: Icon made by Freepik www.flaticon.com
     public partial class PINInputForm : Form
     {
         private string _postMassage;

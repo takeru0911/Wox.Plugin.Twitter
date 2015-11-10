@@ -7,6 +7,6 @@
     "Version": "1.0.2",
     "Language": "csharp",
     "Website": "https://github.com/lances101/Wox.Plugin.Switcheroo",
-    "IcoPath": "Images\\plugin.png",
+    "IcoPath": "Images\\twox.png",
     "ExecuteFileName": "Wox.Plugin.Twitter.dll"
 }
