@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using CoreTweet;
+using CoreTweet.Core;
 using Newtonsoft.Json;
 using System.IO;
+using static CoreTweet.OAuth;
 
 namespace Wox.Plugin.Twitter
 {
     public class TwitterPlugin: IPlugin
     {
         private PluginInitContext context;
-        private CoreTweet.OAuth.OAuthSession session;
-
         private static string TOKEN_FILE_LOCATION = "Property\\token.json";
 
         public void Init(PluginInitContext context)
@@ -41,11 +38,17 @@ namespace Wox.Plugin.Twitter
             Tokens tokens = getTokens();
             if(tokens == null)
             {
-                CoreTweet.OAuth.Authorize()
-                PINInputForm form = new PINInputForm(tweetString);
-
+                var session = OAuth.Authorize("zeFOBi6OfV4KFpUNdiEN6hoWL",
+                                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ");
+                var uri = session.AuthorizeUri;
+                System.Diagnostics.Process.Start(uri.ToString());
+                PINInputForm form = new PINInputForm(tweetString, session);
+                form.Show();
             }
-            tokens.Statuses.Update(status => tweetString);            
+            else
+            {
+                tokens.Statuses.Update(status => tweetString);
+            }
         }
 
         private Tokens getTokens()
