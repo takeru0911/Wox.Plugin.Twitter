@@ -7,10 +7,10 @@ using static CoreTweet.OAuth;
 
 namespace Wox.Plugin.Twitter
 {
-    public class TwitterPlugin: IPlugin
+    public class TwitterPlugin : IPlugin
     {
         private PluginInitContext context;
-        private static string TOKEN_FILE_LOCATION = "Property\\token.json";
+        public const string TOKEN_FILE_LOCATION = "Plugins\\Wox.Plugin.Twitter\\Properties\\secret.json";
 
         public void Init(PluginInitContext context)
         {
@@ -36,18 +36,18 @@ namespace Wox.Plugin.Twitter
         private void postTweet(string tweetString)
         {
             Tokens tokens = getTokens();
-            if(tokens == null)
-            {
-                var session = OAuth.Authorize("zeFOBi6OfV4KFpUNdiEN6hoWL",
-                                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ");
-                var uri = session.AuthorizeUri;
-                System.Diagnostics.Process.Start(uri.ToString());
-                PINInputForm form = new PINInputForm(tweetString, session);
-                form.Show();
+            if(tokens != null)
+            {                
+                tokens.Statuses.Update(status => tweetString);
             }
             else
             {
-                tokens.Statuses.Update(status => tweetString);
+                var session = OAuth.Authorize("zeFOBi6OfV4KFpUNdiEN6hoWL",
+                                                    "Wb6BmK3S1QOGt2MLtjNpepkObfMnWZkVGZ3T93x5qS1OpqtxbJ");
+                var uri = session.AuthorizeUri;
+                System.Diagnostics.Process.Start(uri.ToString());
+                PINInputForm form = new PINInputForm(tweetString, session);
+                form.Show();                
             }
         }
 
