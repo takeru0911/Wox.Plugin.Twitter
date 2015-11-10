@@ -21,13 +21,15 @@ namespace Wox.Plugin.Twitter
         public List<Result> Query(Query query)
         {
             List<Result> results = new List<Result>();
+            string tweetMessage = query.ToString().Remove(0, 2);
             results.Add(new Result()
             {
-                Title = "Tweet: " + query.ToString(),
+                
+                Title = "Tweet: " + tweetMessage,
                 IcoPath = "Image\\twitter.png",
                 Action = context =>
                 {
-                    postTweet(query.ToString().Remove(0, 2));
+                    postTweet(tweetMessage);
                     return true;
                 }
             });
